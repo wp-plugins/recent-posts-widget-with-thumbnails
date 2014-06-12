@@ -85,6 +85,8 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Screenshots ==
 
+1. The first screenshot shows the widget in the sidebar with a title, clickable images and links, in german.
+2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with an additional checkbox to switch thumbnails on and off.
 
 == Changelog ==
 
