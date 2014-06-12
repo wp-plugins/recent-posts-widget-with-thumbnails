@@ -19,6 +19,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 
+	var $thumb_width;  // width of the thumbnail
+	var $thumb_height; // height of the thumbnail
+
 	function __construct() {
 		switch ( get_locale() ) {
 			case 'de_DE':
@@ -29,6 +32,8 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				$widget_name = 'Recent Posts Widget With Thumbnails';
 				$widget_desc = 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.';
 		}
+		$this->thumb_width  = 55;
+		$this->thumb_height = 55;
 		$widget_ops = array( 'classname' => 'recent-posts-widget-with-thumbnails', 'description' => $widget_desc );
 		parent::__construct( 'recent-posts-widget-with-thumbnails', $widget_name, $widget_ops );
 
@@ -97,7 +102,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 			<li><a href="<?php the_permalink(); ?>"><?php 
 				if ( $show_thumb ) : 
 					if ( has_post_thumbnail() ) : 
-						the_post_thumbnail( array( 45,45 ) ); 
+						the_post_thumbnail( array( $this->thumb_width, $this->thumb_height ) ); 
 					#else: ? ><img src="/wp-content/themes/x-k/images/icon.gif" alt="" width="45" height="45" /><?php 
 					endif; 
 				endif; 
@@ -172,7 +177,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		print "\n";
 		print '.recent-posts-widget-with-thumbnails ul li { overflow: hidden; font-size: 91%; margin: 0 0 1.5em; }';
 		print "\n";
-		print '.recent-posts-widget-with-thumbnails ul li img { display: inline; float: left; margin: .3em .75em .75em 0; }';
+		printf ('.recent-posts-widget-with-thumbnails ul li img { display: inline; float: left; margin: .3em .75em .75em 0; width: %dpx; height: %dpx; }', $this->thumb_width, $this->thumb_height );
 		print "\n";
 		print '</style>';
 	}

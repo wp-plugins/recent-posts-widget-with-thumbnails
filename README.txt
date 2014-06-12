@@ -14,11 +14,11 @@ Small and fast plugin to display in the sidebar a list of linked titles and thum
 
 No huge widget with hundreds of options. This plugin is like the well-known WordPress default widget 'Recent Posts' but enhanced with thumbnails of the posts.
 
-The post's thumbnails are built from the post's assigend featured images. If a post does not have a featured image the list item displays no image.
+The posts' thumbnails are built from the posts' assigend featured images. If a post does not have a featured image the list item displays no image.
 
-I copied the code of the WordPress default widget 'Recent Posts' and added the few lines for displaying thumbnails per posts. As default the post's featured image will be used. If there is no featured image no thumb is displayed.
+I copied the code of the WordPress default widget 'Recent Posts' and added the few lines for displaying thumbnails per posts. As default the posts' featured image will be used. If there is no featured image no thumb is displayed.
 
-In the future versions the plugin will take the first image in a post's content and you will be able to select a default thumbnail.
+In the future versions the plugin will take the first image in a posts' content and you will be able to select a default thumbnail.
 
 == Installation ==
 
