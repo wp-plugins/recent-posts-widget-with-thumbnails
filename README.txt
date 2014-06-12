@@ -14,11 +14,11 @@ Small and fast plugin to display in the sidebar a list of linked titles and thum
 
 No huge widget with hundreds of options. This plugin is like the well-known WordPress default widget 'Recent Posts' but enhanced with thumbnails of the posts.
 
-The post's thumbnails are built from the post's assigend featured images. If a post does not have a featured image the list item displays no image.
+The posts' thumbnails are built from the posts' assigend featured images. If a post does not have a featured image the list item displays no image.
 
-I copied the code of the WordPress default widget 'Recent Posts' and added the few lines for displaying thumbnails per posts. As default the post's featured image will be used. If there is no featured image no thumb is displayed.
+I copied the code of the WordPress default widget 'Recent Posts' and added the few lines for displaying thumbnails per posts. As default the posts' featured image will be used. If there is no featured image no thumb is displayed.
 
-In the future versions the plugin will take the first image in a post's content and you will be able to select a default thumbnail.
+In the future versions the plugin will take the first image in a posts' content and you will be able to select a default thumbnail.
 
 == Installation ==
 
@@ -34,16 +34,16 @@ In the future versions the plugin will take the first image in a post's content 
 
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Navigate to the 'Upload' area
-3. Select `quick-featured-images.zip` from your computer
+3. Select `recent-posts-widget-with-thumbnails.zip` from your computer
 4. Click 'Install Now'
 5. Activate the plugin in the Plugin dashboard
 6. Go to 'Appereance' => 'Widgets' and select 'Recent Posts Widget With Thumbnails'
 
 = Using FTP =
 
-1. Download `quick-featured-images.zip`
-2. Extract the `quick-featured-images` directory to your computer
-3. Upload the `quick-featured-images` directory to the `/wp-content/plugins/` directory
+1. Download `recent-posts-widget-with-thumbnails.zip`
+2. Extract the `recent-posts-widget-with-thumbnails` directory to your computer
+3. Upload the `recent-posts-widget-with-thumbnails` directory to the `/wp-content/plugins/` directory
 4. Activate the plugin in the Plugin dashboard
 5. Go to 'Appereance' => 'Widgets' and select 'Recent Posts Widget With Thumbnails'
 
@@ -77,7 +77,7 @@ Actually these languages are supported:
 * English
 * German
 
-Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](http://wordpress.org/support/plugin/quick-featured-images).
+Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](http://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails).
 
 = Where is the *.pot file for translating the plugin in any language? =
 
