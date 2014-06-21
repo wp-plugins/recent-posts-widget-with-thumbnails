@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Recent Posts Widget With Thumbnails\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/recent-posts-widget-with-"
 "thumbnails\n"
-"POT-Creation-Date: 2014-06-12 02:04+0100\n"
-"PO-Revision-Date: 2014-06-12 02:09+0100\n"
+"POT-Creation-Date: 2014-06-19 17:52+0100\n"
+"PO-Revision-Date: 2014-06-19 17:56+0100\n"
 "Last-Translator: Martin Stehle <m.stehle@gmx.de>\n"
 "Language-Team:  <m.stehle@gmx.de>\n"
 "Language: de_DE\n"
@@ -20,10 +20,48 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: recent-posts-widget-with-thumbnails.php:64
-msgid "Recent Posts Widget With Thumbnails"
+#: recent-posts-widget-with-thumbnails.php:78
+msgid "Recent Posts With Thumbnails"
 msgstr "Letzte Beiträge, mit Vorschaubildern"
 
-#: recent-posts-widget-with-thumbnails.php:161
+#: recent-posts-widget-with-thumbnails.php:230
+msgid "Thumbnail Options"
+msgstr "Vorschaubild-Einstellungen"
+
+#: recent-posts-widget-with-thumbnails.php:233
 msgid "Display post featured image?"
 msgstr "Vorschaubilder anzeigen?"
+
+#: recent-posts-widget-with-thumbnails.php:235
+msgid "Width of thumbnail"
+msgstr "Breite des Vorschaubilds"
+
+#: recent-posts-widget-with-thumbnails.php:238
+msgid "Height of thumbnail"
+msgstr "Höhe des Vorschaubilds"
+
+#: recent-posts-widget-with-thumbnails.php:242
+msgid "Use first image only, ignore featured image?"
+msgstr "Erstes Bild im Beitragstext verwenden und Beitragsbild ignorieren?"
+
+#: recent-posts-widget-with-thumbnails.php:245
+msgid "Try to use the post's first image if post has no featured image?"
+msgstr ""
+"Erstes Bild im Beitragstext verwenden, wenn kein Beitragsbild vorhanden?"
+
+#: recent-posts-widget-with-thumbnails.php:248
+msgid "Use default thumbnail if no image could be determined?"
+msgstr ""
+"Standardvorschaubild verwenden, falls kein Bild ermittelt werden konnte?"
+
+#: recent-posts-widget-with-thumbnails.php:250
+msgid "URL of default thumbnail (start with http://)"
+msgstr "URL des Standardvorschaubilds (beginnt mit htttp://)"
+
+#: recent-posts-widget-with-thumbnails.php:253
+msgid "Do you like the plugin?"
+msgstr "Gefällt dir das Plugin?"
+
+#: recent-posts-widget-with-thumbnails.php:253
+msgid "Please rate it at wordpress.org!"
+msgstr "Bewerte es auf wordpress.org!"

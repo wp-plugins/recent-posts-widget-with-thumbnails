@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
 Requires at least: 2.9
 Tested up to: 3.9.1
-Stable tag: 1.0
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,13 +12,13 @@ Small and fast plugin to display in the sidebar a list of linked titles and thum
 
 == Description ==
 
-No huge widget with hundreds of options. This plugin is like the well-known WordPress default widget 'Recent Posts' but enhanced with thumbnails of the posts.
+No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and enhanced to display thumbnails of the posts.
 
-The posts' thumbnails are built from the posts' assigend featured images. If a post does not have a featured image the list item displays no image.
+The thumbnails will be built from the featured image of a post or of the first image in the post content. If there is neither a featured image nor a content image then you can define a default thumbnail.
 
-I copied the code of the WordPress default widget 'Recent Posts' and added the few lines for displaying thumbnails per posts. As default the posts' featured image will be used. If there is no featured image no thumb is displayed.
+The thumbnails appears left-aligned to the post titles. You can set the width and heigth of the thumbnails in the list.
 
-In the future versions the plugin will take the first image in a posts' content and you will be able to select a default thumbnail.
+The widget is available in english and german.
 
 == Installation ==
 
@@ -50,13 +50,23 @@ In the future versions the plugin will take the first image in a posts' content 
 
 == Frequently Asked Questions ==
 
-= Where can I set a default thumbnail? =
+= What are the requirements for this plugin? =
 
-This feature will come in a future version of the plugin.
+The WordPress version should be at least 2.9 to use featured images.
 
-= Where can I set the width and height of the thumbnail? =
+The theme should support `wp_head()` in the HTML header section to print the CSS code for a beautiful alignment of the thumbnails.
 
-This feature will come in a future version of the plugin.
+= Can I set a default thumbnail? =
+
+Yes.
+
+= Can I set the width and height of the thumbnail? =
+
+Yes.
+
+= Can I change the alignment of the thumbnails in the list? =
+
+This feature will come in a future version of the plugin. Set the alignment in the CSS of your theme instead.
 
 = Where can I set the CSS of the list? =
 
@@ -64,11 +74,11 @@ This feature will come in a future version of the plugin. Set the CSS in the sty
 
 = I want to style the list with my own CSS. What is the CSS selector of the list? =
 
-The list is set in a container with the class attribut with the value 'recent-posts-widget-with-thumbnails'. So your CSS code can catch the list using '.recent-posts-widget-with-thumbnails ul'.
+The list is set in a container with the class attribut with the value 'recent-posts-widget-with-thumbnails'. So your CSS code can catch the list using `.recent-posts-widget-with-thumbnails ul`.
 
 = Can the plugin take the first image of a post as thumbnail image? =
 
-This feature will come in a future version of the plugin.
+Yes. And you can select to prefer the first image to the featured image or to use the first image only.
 
 = Which languages does the plugin support? =
 
@@ -86,14 +96,26 @@ If you want to contribute a translation of the plugin in your language it would 
 == Screenshots ==
 
 1. The first screenshot shows the widget in the sidebar with a title, clickable images and links, in german.
-2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with an additional checkbox to switch thumbnails on and off.
+2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with additional options for the thumbnails.
 
 == Changelog ==
+
+= 2.0 =
+* Added option to set width and height of the thumbnails
+* Added option to prefer first content image to featured image
+* Added option to use only first content image as thumbnail
+* Added option to set a default thumbnail
+* Added function to delete plugin's settings in the database if the plugin is deleted
+* Improved code for more robustness
+* Revised *.pot file and german translation
 
 = 1.0 =
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 2.0 =
+More options and improved code
 
 = 1.0 =
 First release.
