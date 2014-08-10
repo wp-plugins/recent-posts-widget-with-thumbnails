@@ -3,14 +3,14 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     2.0
+Version:     2.1
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-thumbnails
 Domain Path: /languages
 License:     GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
-+/
+*/
 
 /**
  * Recent_Posts_Widget_With_Thumbnails widget class
