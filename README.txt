@@ -3,8 +3,8 @@ Contributors: Hinjiriyo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
 Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
 Requires at least: 2.9
-Tested up to: 3.9.1
-Stable tag: 2.0
+Tested up to: 3.9.2
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,10 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Changelog ==
 
+= 2.1 =
+* Improve uninstall routine
+* Tested successfully with WordPress 3.9.2
+
 = 2.0 =
 * Added option to set width and height of the thumbnails
 * Added option to prefer first content image to featured image
@@ -113,6 +117,9 @@ If you want to contribute a translation of the plugin in your language it would 
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 2.1 =
+Improved uninstall routine, tested with WordPress 3.9.2
 
 = 2.0 =
 More options and improved code
