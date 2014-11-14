@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     2.1.1
+Version:     2.2
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-thumbnails
@@ -128,7 +128,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 						// try to find and display the first post's image and return success
 						$is_thumb = $this->the_first_posts_image( get_the_content(), $size );
 					else :
-					// else 
+						// else 
 						// look for featured image
 						if ( has_post_thumbnail() ) : 
 							// if there is featured image then show featured image
@@ -318,38 +318,48 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	 *
 	 * @return    integer    the post id of the image
 	 */
-	private function get_image_id_by_url ( $content ) {
+	private function get_content_image_id ( $content ) {
 		// set variables
 		global $wpdb;
-		$thumb_id = 0;
-		$pat_find_img_src = '/<img.*?src=[\'"]([^\'"]+)[\'"][^>]*>/i';
+		$site_url = get_site_url();
 		// look for images in HTML code
-		preg_match_all( $pat_find_img_src, $content, $matches );
-		// if img elements found: try to get the first image's ID
-		if ( isset( $matches ) and 0 < count( $matches ) ) {
-			foreach ( $matches[ 1 ] as $url ) {
-				preg_match( '|' . get_site_url() . '|i', $url, $matches );
-				// if site-owned image
-				if ( isset( $matches ) and 0 < count( $matches ) ) {
-					// delete optional query string in img src
-					$url = preg_replace( '/([^?]+).*/', '\1', $url );
-					// delete image dimensions data in img file name, just take base name and extension
-					$guid = preg_replace( '/(.+)-\d+x\d+\.(\w+)/', '\1.\2', $url );
-					// look up its ID in the db
-					$img_id = $wpdb->get_var( $wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE `guid` = '%s'", $guid ) );
-					// if it is available take its ID as new thumb id
-					if ( $img_id ) {
-						// finally we have an id
-						$thumb_id = intval( $img_id );
-					}
-				} // if $matches
-				// stop loop, because we want only the first matching image of a post
-				if ( $thumb_id ) {
-					break;
-				}
-			} // foreach( $url )
-		} // if $matches
-		return $thumb_id;
+		preg_match_all( '/<img[^>]+>/i', $content, $all_imgs );
+		if ( $all_imgs ) {
+			foreach ( $all_imgs[ 0 ] as $img ) {
+				// only consider images of the same domain as the website, omit image from external servers
+				if ( false !== strpos( $img, $site_url ) ) {
+					// find class attribute and catch its value
+					preg_match( '/<img.*?class\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img, $img_class );
+					if ( $img_class ) {
+						// Look for the WP image id
+						preg_match( '/wp-image-([\d]+)/i', $img_class[ 1 ], $img_id );
+						// if first image id found: return it
+						if ( $img_id ) {
+							return intval( $img_id[ 1 ] );
+						} // if(img_id)
+					} // if(img_class)
+					
+					// else: try to catch image id by its url as stored in the database
+					// find src attribute and catch its value
+					preg_match( '/<img.*?src\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img, $img_src );
+					if ( $img_src ) {
+						// delete optional query string in img src
+						$url = preg_replace( '/([^?]+).*/', '\1', $img_src[ 1 ] );
+						// delete image dimensions data in img file name, just take base name and extension
+						$guid = preg_replace( '/(.+)-\d+x\d+\.(\w+)/', '\1.\2', $url );
+						// look up its ID in the db
+						$img_id = $wpdb->get_var( $wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE `guid` = '%s'", $guid ) );
+						// if first image id found: return it
+						if ( $img_id ) {
+							return intval( $img_id );
+						} // if(img_id)
+					} // if(img_src)
+				} // if(local image)
+			} // foreach(img)
+		} // if(all_imgs)
+		
+		// if nothing found: return 0
+		return 0;
 	}
 
 	/**
@@ -362,7 +372,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	 */
 	private function the_first_posts_image ( $content, $size ) {
 		// look for first image
-		$thumb_id = $this->get_image_id_by_url( $content );
+		$thumb_id = $this->get_content_image_id( $content );
 		// if there is first image then show first image
 		if ( $thumb_id ) :
 			echo wp_get_attachment_image( $thumb_id, $size );
