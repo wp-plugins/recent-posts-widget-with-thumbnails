@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
 Requires at least: 2.9
 Tested up to: 4.0
-Stable tag: 2.2
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,10 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Changelog ==
 
+= 2.2.1 =
+* Fixed bug which prevented to find the first content image
+* Slightly revised algorithm for detecting the first image in post content
+
 = 2.2 =
 Revised algorithm to detect the first image in post content.
 
@@ -124,8 +128,11 @@ Successfully tested with WordPress 4.0
 
 == Upgrade Notice ==
 
+= 2.2.1 =
+Bugfixed and improved algorithm for detecting the first image in post contents
+
 = 2.2 =
-Revised algorithm to detect the first image in post content.
+Revised algorithm for detecting the first image in post content
 
 = 2.1.1 =
 Successfully tested with WordPress 4.0

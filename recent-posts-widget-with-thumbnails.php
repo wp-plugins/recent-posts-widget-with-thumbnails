@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     2.2
+Version:     2.2.1
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-thumbnails
@@ -189,9 +189,9 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$instance[ 'number' ] 		= (int) $new_instance[ 'number' ];
-		$instance[ 'thumb_width' ] 	= (int) $new_instance[ 'thumb_width' ];
-		$instance[ 'thumb_height' ] = (int) $new_instance[ 'thumb_height' ];
+		$instance[ 'number' ] 		= absint( $new_instance[ 'number' ] );
+		$instance[ 'thumb_width' ] 	= absint( $new_instance[ 'thumb_width' ] );
+		$instance[ 'thumb_height' ] = absint( $new_instance[ 'thumb_height' ] );
 		$instance[ 'title' ] 		= strip_tags( $new_instance[ 'title' ]);
 		$instance[ 'default_url' ] 	= strip_tags( $new_instance[ 'default_url' ]);
 		$instance[ 'show_date' ] 	= isset( $new_instance[ 'show_date' ] ) ? (bool) $new_instance[ 'show_date' ] : false;
@@ -308,55 +308,52 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	}
 
 	/**
-	 * Returns the post id of an uploaded image, else 0
-	 * Looks for internal images only, i.e. images from the 
-	 * media library and not images embedded by URL from 
-	 * external servers
+	 * Returns the id of the first image in the content, else 0
 	 *
 	 * @access   private
 	 * @since     2.0
 	 *
-	 * @return    integer    the post id of the image
+	 * @return    integer    the post id of the first content image
 	 */
-	private function get_content_image_id ( $content ) {
+	private function get_first_content_image_id ( $content ) {
 		// set variables
 		global $wpdb;
-		$site_url = get_site_url();
 		// look for images in HTML code
-		preg_match_all( '/<img[^>]+>/i', $content, $all_imgs );
-		if ( $all_imgs ) {
-			foreach ( $all_imgs[ 0 ] as $img ) {
-				// only consider images of the same domain as the website, omit image from external servers
-				if ( false !== strpos( $img, $site_url ) ) {
-					// find class attribute and catch its value
-					preg_match( '/<img.*?class\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img, $img_class );
-					if ( $img_class ) {
-						// Look for the WP image id
-						preg_match( '/wp-image-([\d]+)/i', $img_class[ 1 ], $img_id );
-						// if first image id found: return it
-						if ( $img_id ) {
-							return intval( $img_id[ 1 ] );
-						} // if(img_id)
-					} // if(img_class)
-					
-					// else: try to catch image id by its url as stored in the database
-					// find src attribute and catch its value
-					preg_match( '/<img.*?src\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img, $img_src );
-					if ( $img_src ) {
-						// delete optional query string in img src
-						$url = preg_replace( '/([^?]+).*/', '\1', $img_src[ 1 ] );
-						// delete image dimensions data in img file name, just take base name and extension
-						$guid = preg_replace( '/(.+)-\d+x\d+\.(\w+)/', '\1.\2', $url );
-						// look up its ID in the db
-						$img_id = $wpdb->get_var( $wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE `guid` = '%s'", $guid ) );
-						// if first image id found: return it
-						if ( $img_id ) {
-							return intval( $img_id );
-						} // if(img_id)
-					} // if(img_src)
-				} // if(local image)
-			} // foreach(img)
-		} // if(all_imgs)
+		preg_match_all( '/<img[^>]+>/i', $content, $all_img_tags );
+		if ( $all_img_tags ) {
+			foreach ( $all_img_tags[ 0 ] as $img_tag ) {
+				// find class attribute and catch its value
+				preg_match( '/<img.*?class\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img_tag, $img_class );
+				if ( $img_class ) {
+					// Look for the WP image id
+					preg_match( '/wp-image-([\d]+)/i', $img_class[ 1 ], $found_id );
+					// if first image id found: check whether is image
+					if ( $found_id ) {
+						$img_id = absint( $found_id[ 1 ] );
+						// if is image: return its id
+						if ( wp_get_attachment_image_src( $img_id ) ) {
+							return $img_id;
+						}
+					} // if(found_id)
+				} // if(img_class)
+				
+				// else: try to catch image id by its url as stored in the database
+				// find src attribute and catch its value
+				preg_match( '/<img.*?src\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img_tag, $img_src );
+				if ( $img_src ) {
+					// delete optional query string in img src
+					$url = preg_replace( '/([^?]+).*/', '\1', $img_src[ 1 ] );
+					// delete image dimensions data in img file name, just take base name and extension
+					$guid = preg_replace( '/(.+)-\d+x\d+\.(\w+)/', '\1.\2', $url );
+					// look up its ID in the db
+					$found_id = $wpdb->get_var( $wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE `guid` = '%s'", $guid ) );
+					// if first image id found: return it
+					if ( $found_id ) {
+						return absint( $found_id );
+					} // if(found_id)
+				} // if(img_src)
+			} // foreach(img_tag)
+		} // if(all_img_tags)
 		
 		// if nothing found: return 0
 		return 0;
@@ -372,7 +369,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	 */
 	private function the_first_posts_image ( $content, $size ) {
 		// look for first image
-		$thumb_id = $this->get_content_image_id( $content );
+		$thumb_id = $this->get_first_content_image_id( $content );
 		// if there is first image then show first image
 		if ( $thumb_id ) :
 			echo wp_get_attachment_image( $thumb_id, $size );
