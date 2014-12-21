@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     2.2.1
+Version:     2.2.2
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-thumbnails
@@ -280,9 +280,10 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 			$width = $this->thumb_width;
 			$height = $this->thumb_height;
 		// else use stored values
-		else :
-			$width  = absint( $options[ '2' ][ 'thumb_width' ]  );
-			$height = absint( $options[ '2' ][ 'thumb_height' ] );
+		else :	
+			$options = array_shift( $options );
+			$width  = absint( $options[ 'thumb_width' ]  );
+			$height = absint( $options[ 'thumb_height' ] );
 			if ( ! $width )  $width = $this->thumb_width;
 			if ( ! $height ) $height = $this->thumb_height;
 		endif;
