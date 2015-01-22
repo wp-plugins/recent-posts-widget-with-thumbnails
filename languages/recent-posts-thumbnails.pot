@@ -3,60 +3,89 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Recent Posts Widget With Thumbnails\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/plugins/recent-posts-widget-with-thumbnails\n"
-"POT-Creation-Date: 2014-06-19 17:52+0100\n"
-"PO-Revision-Date: 2014-06-19 17:53+0100\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/plugins/recent-posts-widget-with-"
+"thumbnails\n"
+"POT-Creation-Date: 2015-01-22 22:53+0100\n"
+"PO-Revision-Date: 2015-01-22 22:59+0100\n"
 "Language-Team:  <m.stehle@gmx.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.7.3\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
 "esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: recent-posts-widget-with-thumbnails.php:78
+#: recent-posts-widget-with-thumbnails.php:83
 msgid "Recent Posts With Thumbnails"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:230
+#: recent-posts-widget-with-thumbnails.php:258
+msgid "Title:"
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:261
+msgid "Number of posts to show:"
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:265
+msgid "Display post date?"
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:267
 msgid "Thumbnail Options"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:233
+#: recent-posts-widget-with-thumbnails.php:270
 msgid "Display post featured image?"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:235
+#: recent-posts-widget-with-thumbnails.php:272
 msgid "Width of thumbnail"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:238
+#: recent-posts-widget-with-thumbnails.php:275
 msgid "Height of thumbnail"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:242
-msgid "Use first image only, ignore featured image?"
+#: recent-posts-widget-with-thumbnails.php:279
+msgid "Use aspect ratios of original images?"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:245
+#: recent-posts-widget-with-thumbnails.php:279
+msgid "If checked the given width is used to determine the height of the thumbnail automatically. This option also supports responsive web design."
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:282
+msgid "Do not show title?"
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:282
+msgid "Make sure you set a default thumbnail for posts without a thumbnail, otherwise there will be no link."
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:285
 msgid "Try to use the post's first image if post has no featured image?"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:248
+#: recent-posts-widget-with-thumbnails.php:288
+msgid "Use first image only, ignore featured image?"
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:291
 msgid "Use default thumbnail if no image could be determined?"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:250
+#: recent-posts-widget-with-thumbnails.php:293
 msgid "URL of default thumbnail (start with http://)"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:253
+#: recent-posts-widget-with-thumbnails.php:296
 msgid "Do you like the plugin?"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:253
+#: recent-posts-widget-with-thumbnails.php:296
 msgid "Please rate it at wordpress.org!"
 msgstr ""
