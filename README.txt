@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
 Requires at least: 2.9
 Tested up to: 4.1
-Stable tag: 2.2.2
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,12 @@ The thumbnails will be built from the featured image of a post or of the first i
 The thumbnails appears left-aligned to the post titles. You can set the width and heigth of the thumbnails in the list.
 
 The widget is available in english and german.
+
+= What users said =
+
+* **Number 5** in [Best List of Free Recent Posts Widgets for WordPress](http://dotcave.com/wordpress/free-recent-posts-widgets-for-wordpress/) by jerry on November 29, 2014
+* **Number 1** in [Nützlich: Die 10 interessantesten Widgets für Ihre WordPress-Webseite](http://www.drweb.de/magazin/nuetzlich-die-10-interessantesten-widgets-fuer-ihre-wordpress-webseite-50307/) by Andreas Hecht on October 13, 2014
+* **Number 1** in [25 Most Useful WordPress Widgets for Your Site](http://www.wpbeginner.com/showcase/25-most-useful-wordpress-widgets-for-your-site/) by Editorial Staff on September 18, 2014
 
 == Installation ==
 
@@ -99,6 +105,12 @@ If you want to contribute a translation of the plugin in your language it would 
 2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with additional options for the thumbnails.
 
 == Changelog ==
+
+= 2.3 =
+* Added option to keep aspect ratios of the original images
+* Added option to hide the post title in the list
+* Moved inline CSS to external file
+* Revised *.pot file and german translation
 
 = 2.2.2 =
 * Successfully tested with WordPress 4.1
