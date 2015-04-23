@@ -3,8 +3,8 @@ Contributors: Hinjiriyo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
 Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
 Requires at least: 2.9
-Tested up to: 4.1
-Stable tag: 2.3
+Tested up to: 4.2
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,11 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Changelog ==
 
+= 2.3.1 =
+* Set CSS for the list style to prevent dots in some themes
+* Added span element with class "post-title" around the title
+* Tested successfully with WordPress 4.2
+
 = 2.3 =
 * Added option to keep aspect ratios of the original images
 * Added option to hide the post title in the list
@@ -143,6 +148,12 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 2.3.1 =
+Slight CSS improvements, tested successfully with WordPress 4.2
+
+= 2.3 =
+Refactored. Please update the settings of the widget after upgrading the plugin
 
 = 2.2.2 =
 Successfully tested with WordPress 4.1, fixed a minor bug

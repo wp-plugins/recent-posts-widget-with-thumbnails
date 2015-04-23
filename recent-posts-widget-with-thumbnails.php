@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     2.3
+Version:     2.3.1
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-thumbnails
@@ -39,13 +39,13 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				$widget_desc = 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.';
 		}
 		$this->plugin_slug  = 'recent-posts-widget-with-thumbnails';
-		$this->plugin_version  = '2.3';
+		$this->plugin_version  = '2.3.1';
 		$this->number_posts  = 5;
 		$this->default_thumb_width  = 55;
 		$this->default_thumb_height = 55;
 		$this->default_thumb_url = plugins_url( 'default_thumb.gif', __FILE__ );
 		$this->text_domain = 'recent-posts-thumbnails';
-		$this->css_file_path = plugin_dir_path( __FILE__ ) . 'public.css';
+		$this->css_file_path = dirname( __FILE__ ) . 'public.css';
 		
 		$widget_ops = array( 'classname' => $this->plugin_slug, 'description' => $widget_desc );
 		parent::__construct( $this->plugin_slug, $widget_name, $widget_ops );
@@ -54,6 +54,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		add_action( 'save_post', array( $this, 'flush_widget_cache' ) );
 		add_action( 'deleted_post', array( $this, 'flush_widget_cache' ) );
 		add_action( 'switch_theme', array( $this, 'flush_widget_cache' ) );
+		#add_action( 'widget_update_callback', array( $this, 'save_css_file' ), 10, 4 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_public_style' ) );
 	}
 
@@ -173,7 +174,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				endif; // show_thumb
 				// show title if wished
 				if ( ! $hide_title ) {
-					get_the_title() ? the_title() : the_ID(); 
+					?><span class="post-title"><?php get_the_title() ? the_title() : the_ID();  ?></span><?php
 				}
 				?></a><?php 
 				if ( $show_date ) : 
@@ -414,7 +415,9 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$all_instances = $this->get_settings();
 
 		// generate CSS
-		$css_code = sprintf( '.%s ul li { overflow: hidden; margin: 0 0 1.5em; }', $this->plugin_slug );
+		$css_code = sprintf( '.%s ul { list-style: outside none none; }', $this->plugin_slug );
+		$css_code .= "\n"; 
+		$css_code .= sprintf( '.%s ul li { overflow: hidden; margin: 0 0 1.5em; }', $this->plugin_slug );
 		$css_code .= "\n"; 
 		$css_code .= sprintf( '.%s ul li img { display: inline; float: left; margin: .3em .75em .75em 0; }', $this->plugin_slug );
 		$css_code .= "\n";
@@ -448,11 +451,11 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		}
 		
 		// write file
-		$fh = fopen( $this->css_file_path, 'w' );
-		#if ( $fhd ) {
+		$fh = fopen( $this->css_file_path, 'wb' );
+		if ( $fh ) {
 			fwrite ( $fh, $css_code );
 			fclose( $fh );
-		#}
+		}
 	}
 
 }
