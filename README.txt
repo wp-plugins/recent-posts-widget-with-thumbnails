@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
 Requires at least: 2.9
 Tested up to: 4.2
-Stable tag: 2.3.1
+Stable tag: 2.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ If you want to contribute a translation of the plugin in your language it would 
 2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with additional options for the thumbnails.
 
 == Changelog ==
+
+= 2.3.2 =
+* Fixed bug of wrong path to public.css file
+* Changed HTML class names, now they start with 'rpwwt-'
 
 = 2.3.1 =
 * Set CSS for the list style to prevent dots in some themes
