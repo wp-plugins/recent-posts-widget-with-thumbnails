@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     2.3.1
+Version:     2.3.2
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-thumbnails
@@ -45,7 +45,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$this->default_thumb_height = 55;
 		$this->default_thumb_url = plugins_url( 'default_thumb.gif', __FILE__ );
 		$this->text_domain = 'recent-posts-thumbnails';
-		$this->css_file_path = dirname( __FILE__ ) . 'public.css';
+		$this->css_file_path = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'public.css';
 		
 		$widget_ops = array( 'classname' => $this->plugin_slug, 'description' => $widget_desc );
 		parent::__construct( $this->plugin_slug, $widget_name, $widget_ops );
@@ -174,11 +174,11 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				endif; // show_thumb
 				// show title if wished
 				if ( ! $hide_title ) {
-					?><span class="post-title"><?php get_the_title() ? the_title() : the_ID();  ?></span><?php
+					?><span class="rpwwt-post-title"><?php get_the_title() ? the_title() : the_ID();  ?></span><?php
 				}
 				?></a><?php 
 				if ( $show_date ) : 
-					?> <span class="post-date"><?php echo get_the_date(); ?></span><?php 
+					?> <span class="rpwwt-post-date"><?php echo get_the_date(); ?></span><?php 
 				endif; ?></li>
 		<?php endwhile; ?>
 		</ul>
