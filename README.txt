@@ -3,8 +3,8 @@ Contributors: Hinjiriyo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
 Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
 Requires at least: 2.9
-Tested up to: 4.2
-Stable tag: 2.3.2
+Tested up to: 4.2.2
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,8 +20,28 @@ The thumbnails appears left-aligned to the post titles. You can set the width an
 
 The widget is available in english and german.
 
+= Options you can set =
+
+1. Title of the widget
+2. Number of listed posts
+3. Hide post title
+4. Show post date
+5. Show post excerpt
+6. Excerpt length
+7. Signs after excerpt
+8. Show post thumbnail (featured image)
+9. Thumbnail dimensions
+10. Thumbnail width in px
+11. Thumbnail height in px
+12. Keep aspect ratio of thumbnails
+13. Try to take the first post image as thumbnail
+14. Only use the first post image as thumbnail
+15. Use default thumbnail if no thumbnail is available
+16. Default thumbnail URL
+
 = What users said =
 
+* [How to show recent posts in WordPress blog](http://mayifix.com/how-to-show-recent-posts-in-wordpress-blog.html) by Robin on June 28, 2015
 * **Number 5** in [Best List of Free Recent Posts Widgets for WordPress](http://dotcave.com/wordpress/free-recent-posts-widgets-for-wordpress/) by jerry on November 29, 2014
 * **Number 1** in [Nützlich: Die 10 interessantesten Widgets für Ihre WordPress-Webseite](http://www.drweb.de/magazin/nuetzlich-die-10-interessantesten-widgets-fuer-ihre-wordpress-webseite-50307/) by Andreas Hecht on October 13, 2014
 * **Number 1** in [25 Most Useful WordPress Widgets for Your Site](http://www.wpbeginner.com/showcase/25-most-useful-wordpress-widgets-for-your-site/) by Editorial Staff on September 18, 2014
@@ -68,7 +88,7 @@ Yes.
 
 = Can I set the width and height of the thumbnail? =
 
-Yes.
+Yes. You can enter the desired width and height of the thumbnails or select one of the sizes in 'Settings' > 'Media'.
 
 = Can I change the alignment of the thumbnails in the list? =
 
@@ -105,6 +125,17 @@ If you want to contribute a translation of the plugin in your language it would 
 2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with additional options for the thumbnails.
 
 == Changelog ==
+
+= 3.0 =
+* Added default image sizes dropdown menu
+* Added options to print out excerpts
+* Updated *.pot file and german translation
+* Refactored: HTML output moved into include files
+* Slight improvements for security and performance
+
+= 2.3.3 =
+* Fixed error message on trial to open the CSS file
+* Tested successfully with WordPress 4.2.2
 
 = 2.3.2 =
 * Fixed bug of wrong path to public.css file
@@ -152,6 +183,15 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 3.0 =
+Added options: image sizes and excerpt
+
+= 2.3.3 =
+Fixed error message on trial to open the CSS file
+
+= 2.3.2 =
+Fixed CSS bug
 
 = 2.3.1 =
 Slight CSS improvements, tested successfully with WordPress 4.2
