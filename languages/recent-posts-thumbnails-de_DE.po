@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Recent Posts Widget With Thumbnails\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/recent-posts-widget-with-"
 "thumbnails\n"
-"POT-Creation-Date: 2015-07-05 12:20+0200\n"
-"PO-Revision-Date: 2015-07-05 12:21+0200\n"
+"POT-Creation-Date: 2015-07-07 23:26+0200\n"
+"PO-Revision-Date: 2015-07-07 23:26+0200\n"
 "Last-Translator: Martin Stehle <m.stehle@gmx.de>\n"
 "Language-Team: m.stehle@gmx.de\n"
 "Language: de_DE\n"
@@ -21,46 +21,74 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: includes/form.php:1
+msgid "Display Options"
+msgstr "Anzeige-Einstellungen"
+
+#: includes/form.php:3
 msgid "Title:"
 msgstr "Titel:"
 
-#: includes/form.php:4
+#: includes/form.php:6
 msgid "Number of posts to show:"
 msgstr "Anzahl der anzuzeigenden Beiträge:"
 
-#: includes/form.php:8
-msgid "Display post date?"
+#: includes/form.php:10
+msgid "Do not list the current post?"
+msgstr "Aktuell angezeigten Beitrag nicht auflisten?"
+
+#: includes/form.php:13
+msgid "Keep sticky posts on top of the list?"
+msgstr "Als oben halten (sticky) markierte Beiträge zuerst auflisten?"
+
+#: includes/form.php:16
+msgid "Do not show post title?"
+msgstr "Beitragstitel nicht anzeigen?"
+
+#: includes/form.php:16
+msgid ""
+"Make sure you set a default thumbnail for posts without a thumbnail, "
+"otherwise there will be no link."
+msgstr ""
+"Achte darauf, dass du ein Standardbild für Beiträge ohne Beitragsbild setzt, "
+"sonst wird kein Link angezeigt."
+
+#: includes/form.php:19
+msgid "Show post date?"
 msgstr "Beitragsdatum anzeigen?"
 
-#: includes/form.php:11
+#: includes/form.php:22
 msgid "Show excerpt?"
 msgstr "Auszug anzeigen?"
 
-#: includes/form.php:13
+#: includes/form.php:24
 msgid "Maximum length of excerpt"
 msgstr "Maximallänge des Auszugs"
 
-#: includes/form.php:16
+#: includes/form.php:27
 msgid "Signs after excerpt"
 msgstr "Zeichen nach dem Auszug"
 
-#: includes/form.php:19
+#: includes/form.php:31
+msgid "Show posts of selected category only?"
+msgstr "Nur Beiträge der ausgewählten Kategorie auflisten?"
+
+#: includes/form.php:35
 msgid "Thumbnail Options"
 msgstr "Vorschaubild-Einstellungen"
 
-#: includes/form.php:22
+#: includes/form.php:38
 msgid "Display post featured image?"
 msgstr "Vorschaubilder anzeigen?"
 
-#: includes/form.php:24
+#: includes/form.php:40
 msgid "Size of thumbnail"
 msgstr "Größe des Vorschaubilds"
 
-#: includes/form.php:26
+#: includes/form.php:42
 msgid "Specified width and height"
 msgstr "Angegebende Breite und Höhe"
 
-#: includes/form.php:51
+#: includes/form.php:52
 #, php-format
 msgid ""
 "If you use a specified size the following sizes will be taken, otherwise "
@@ -70,19 +98,19 @@ msgstr ""
 "übernommen, ansonsten werden sie ignoriert und die ausgewähhlte Größe, wie "
 "in %s gespeichert, wird verwendet:"
 
-#: includes/form.php:54
+#: includes/form.php:55
 msgid "Width of thumbnail"
 msgstr "Breite des Vorschaubilds"
 
-#: includes/form.php:57
+#: includes/form.php:58
 msgid "Height of thumbnail"
 msgstr "Höhe des Vorschaubilds"
 
-#: includes/form.php:61
+#: includes/form.php:62
 msgid "Use aspect ratios of original images?"
 msgstr "Seitenverhältnis des Originalbildes verwenden?"
 
-#: includes/form.php:61
+#: includes/form.php:62
 msgid ""
 "If checked the given width is used to determine the height of the thumbnail "
 "automatically. This option also supports responsive web design."
@@ -91,45 +119,33 @@ msgstr ""
 "Vorschaubildes automatisch zu bestimmen. Diese Option unterstützt Responsiv "
 "Web Design."
 
-#: includes/form.php:64
-msgid "Do not show title?"
-msgstr "Titel nicht anzeigen?"
-
-#: includes/form.php:64
-msgid ""
-"Make sure you set a default thumbnail for posts without a thumbnail, "
-"otherwise there will be no link."
-msgstr ""
-"Achte darauf, dass du ein Standardbild für Beiträge ohne Beitragsbild setzt, "
-"sonst wird kein Link angezeigt."
-
-#: includes/form.php:67
+#: includes/form.php:65
 msgid "Try to use the post's first image if post has no featured image?"
 msgstr ""
 "Versuchen, erstes Bild im Beitrag zu verwenden, wenn kein Beitragsbild "
 "vorhanden ist?"
 
-#: includes/form.php:70
+#: includes/form.php:68
 msgid "Use first image only, ignore featured image?"
 msgstr "Erstes Bild im Text verwenden und vorhandenes Beitragsbild ignorieren?"
 
-#: includes/form.php:73
+#: includes/form.php:71
 msgid "Use default thumbnail if no image could be determined?"
 msgstr ""
 "Standardvorschaubild verwenden, falls kein Bild ermittelt werden konnte?"
 
-#: includes/form.php:75
+#: includes/form.php:73
 msgid "URL of default thumbnail (start with http://)"
 msgstr "URL des Standardvorschaubilds (beginnt mit http://)"
 
-#: includes/form.php:78
+#: includes/form.php:76
 msgid "Do you like the plugin?"
 msgstr "Gefällt dir das Plugin?"
 
-#: includes/form.php:78
+#: includes/form.php:76
 msgid "Please rate it at wordpress.org!"
 msgstr "Bewerte es auf wordpress.org!"
 
-#: recent-posts-widget-with-thumbnails.php:88
+#: recent-posts-widget-with-thumbnails.php:91
 msgid "Recent Posts With Thumbnails"
 msgstr "Letzte Beiträge, mit Vorschaubildern"
