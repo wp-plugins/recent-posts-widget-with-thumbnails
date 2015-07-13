@@ -1,10 +1,10 @@
 === Recent Posts Widget With Thumbnails ===
 Contributors: Hinjiriyo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
-Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
+Tags: aspect ratio, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width
 Requires at least: 2.9
 Tested up to: 4.2.2
-Stable tag: 3.0
+Stable tag: 4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,20 +24,22 @@ The widget is available in english and german.
 
 1. Title of the widget
 2. Number of listed posts
-3. Hide post title
-4. Show post date
-5. Show post excerpt
-6. Excerpt length
-7. Signs after excerpt
-8. Show post thumbnail (featured image)
-9. Thumbnail dimensions
-10. Thumbnail width in px
-11. Thumbnail height in px
-12. Keep aspect ratio of thumbnails
-13. Try to take the first post image as thumbnail
-14. Only use the first post image as thumbnail
-15. Use default thumbnail if no thumbnail is available
-16. Default thumbnail URL
+3. Hide current post in list
+4. Keep sticky posts on top of the list
+5. Hide post title
+6. Show post date
+7. Show post excerpt
+8. Excerpt length
+9. Signs after excerpt
+10. Show post thumbnail (featured image)
+11. Registered thumbnail dimensions
+12. Thumbnail width in px
+13. Thumbnail height in px
+14. Keep aspect ratio of thumbnails
+15. Try to take the first post image as thumbnail
+16. Only use the first post image as thumbnail
+17. Use default thumbnail if no thumbnail is available
+18. Default thumbnail URL
 
 = What users said =
 
@@ -45,6 +47,44 @@ The widget is available in english and german.
 * **Number 5** in [Best List of Free Recent Posts Widgets for WordPress](http://dotcave.com/wordpress/free-recent-posts-widgets-for-wordpress/) by jerry on November 29, 2014
 * **Number 1** in [Nützlich: Die 10 interessantesten Widgets für Ihre WordPress-Webseite](http://www.drweb.de/magazin/nuetzlich-die-10-interessantesten-widgets-fuer-ihre-wordpress-webseite-50307/) by Andreas Hecht on October 13, 2014
 * **Number 1** in [25 Most Useful WordPress Widgets for Your Site](http://www.wpbeginner.com/showcase/25-most-useful-wordpress-widgets-for-your-site/) by Editorial Staff on September 18, 2014
+
+= Useful hints for developers: Hooks and CSS =
+
+**Supported Hooks:** The plugin considers the output of actions hooked on:
+
+1. widget_title
+2. widget_posts_args
+3. excerpt_more
+4. excerpt_length
+
+**CSS Selectors:** To design the list and its items you can use these CSS selectors:
+
+The elements which contain the posts list:
+`.recent-posts-widget-with-thumbnails`
+
+The lists which contain the list items:
+`.recent-posts-widget-with-thumbnails ul`
+
+All list items in the list:
+`.recent-posts-widget-with-thumbnails ul li`
+
+All list items of sticky posts in the list:
+`.recent-posts-widget-with-thumbnails ul li.rpwwt-sticky`
+
+All links in the list; every link contains the image and the post title:
+`.recent-posts-widget-with-thumbnails ul li a`
+
+All images in the list (use that to set the margins around images):
+`.recent-posts-widget-with-thumbnails ul li a img`
+
+All post titles in the list:
+`.recent-posts-widget-with-thumbnails ul li a span.rpwwt-post-title`
+
+All post dates in the list:
+`.recent-posts-widget-with-thumbnails ul li div.rpwwt-post-date`
+
+All post excerpts in the list: 
+`.recent-posts-widget-with-thumbnails ul li div.rpwwt-post-excerpt`
 
 == Installation ==
 
@@ -73,7 +113,6 @@ The widget is available in english and german.
 4. Activate the plugin in the Plugin dashboard
 5. Go to 'Appereance' => 'Widgets' and select 'Recent Posts Widget With Thumbnails'
 
-
 == Frequently Asked Questions ==
 
 = What are the requirements for this plugin? =
@@ -88,7 +127,7 @@ Yes.
 
 = Can I set the width and height of the thumbnail? =
 
-Yes. You can enter the desired width and height of the thumbnails or select one of the sizes in 'Settings' > 'Media'.
+Yes. You can enter the desired width and height of the thumbnails or select one of the sizes as set in 'Settings' > 'Media'.
 
 = Can I change the alignment of the thumbnails in the list? =
 
@@ -98,13 +137,9 @@ This feature will come in a future version of the plugin. Set the alignment in t
 
 This feature will come in a future version of the plugin. Set the CSS in the style.css of your theme instead.
 
-= I want to style the list with my own CSS. What is the CSS selector of the list? =
-
-The list is set in a container with the class attribut with the value 'recent-posts-widget-with-thumbnails'. So your CSS code can catch the list using `.recent-posts-widget-with-thumbnails ul`.
-
 = Can the plugin take the first image of a post as thumbnail image? =
 
-Yes. And you can select to prefer the first image to the featured image or to use the first image only.
+Yes. It works with images previously uploaded into the media library. You can select to prefer the first image to the featured image or to use the first image only.
 
 = Which languages does the plugin support? =
 
@@ -122,16 +157,29 @@ If you want to contribute a translation of the plugin in your language it would 
 == Screenshots ==
 
 1. The first screenshot shows the widget in the sidebar with a title, clickable images and links, in german.
-2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with additional options for the thumbnails.
+2. The second screenshot shows the german translated widget on the Widget Management Page in the backend.
 
 == Changelog ==
+
+= 4.0 =
+* Added category option: widget only lists posts of a selected category, else lists posts of all categories
+* Added sticky posts option: widget shows sticky posts on top of the list, else lists them in normal order
+* Added hide current post option: widget does not list the post where the user is currently on, else lists it
+* Added CSS class names for easy designing of the list and its list items; see Description for details
+* Added style sheet for Widget page in the backend
+* Fixed missing custom image sizes in frontend
+* Formatted the code more readable
+* Updated *.pot file and german translation
+* Updated screenshots
+* Revised readme.txt
 
 = 3.0 =
 * Added default image sizes dropdown menu
 * Added options to print out excerpts
-* Updated *.pot file and german translation
 * Refactored: HTML output moved into include files
 * Slight improvements for security and performance
+* Updated *.pot file and german translation
+* Revised readme.txt
 
 = 2.3.3 =
 * Fixed error message on trial to open the CSS file
@@ -177,12 +225,15 @@ Successfully tested with WordPress 4.0
 * Added option to set a default thumbnail
 * Added function to delete plugin's settings in the database if the plugin is deleted
 * Improved code for more robustness
-* Revised *.pot file and german translation
+* Updated *.pot file and german translation
 
 = 1.0 =
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.0 =
+Added options: sticky posts, current post, category filter; revised code
 
 = 3.0 =
 Added options: image sizes and excerpt
