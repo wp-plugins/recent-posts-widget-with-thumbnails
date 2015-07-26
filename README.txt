@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: aspect ratio, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width
 Requires at least: 2.9
 Tested up to: 4.2.2
-Stable tag: 4.0
+Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,15 +31,16 @@ The widget is available in english and german.
 7. Show post excerpt
 8. Excerpt length
 9. Signs after excerpt
-10. Show post thumbnail (featured image)
-11. Registered thumbnail dimensions
-12. Thumbnail width in px
-13. Thumbnail height in px
-14. Keep aspect ratio of thumbnails
-15. Try to take the first post image as thumbnail
-16. Only use the first post image as thumbnail
-17. Use default thumbnail if no thumbnail is available
-18. Default thumbnail URL
+10. Show post of selected categories (or of all categories)
+11. Show post thumbnail (featured image)
+12. Registered thumbnail dimensions
+13. Thumbnail width in px
+14. Thumbnail height in px
+15. Keep aspect ratio of thumbnails
+16. Try to take the first post image as thumbnail
+17. Only use the first post image as thumbnail
+18. Use default thumbnail if no thumbnail is available
+19. Default thumbnail URL
 
 = What users said =
 
@@ -50,41 +51,50 @@ The widget is available in english and german.
 
 = Useful hints for developers: Hooks and CSS =
 
-**Supported Hooks:** The plugin considers the output of actions hooked on:
+See [Other Notes](https://wordpress.org/plugins/recent-posts-widget-with-thumbnails/other_notes/) for supported hooks and available CSS selectors.
+
+== Other Notes ==
+
+= Supported Hooks =
+
+The plugin considers the output of actions hooked on:
 
 1. widget_title
 2. widget_posts_args
 3. excerpt_more
 4. excerpt_length
+5. list_cats
 
-**CSS Selectors:** To design the list and its items you can use these CSS selectors:
+= Available CSS Selectors =
+
+To design the list and its items you can use these CSS selectors:
 
 The elements which contain the posts list:
-`.recent-posts-widget-with-thumbnails`
+`.rpwwt-widget`
 
 The lists which contain the list items:
-`.recent-posts-widget-with-thumbnails ul`
+`.rpwwt-widget ul`
 
 All list items in the list:
-`.recent-posts-widget-with-thumbnails ul li`
+`.rpwwt-widget ul li`
 
 All list items of sticky posts in the list:
-`.recent-posts-widget-with-thumbnails ul li.rpwwt-sticky`
+`.rpwwt-widget ul li.rpwwt-sticky`
 
 All links in the list; every link contains the image and the post title:
-`.recent-posts-widget-with-thumbnails ul li a`
+`.rpwwt-widget ul li a`
 
 All images in the list (use that to set the margins around images):
-`.recent-posts-widget-with-thumbnails ul li a img`
+`.rpwwt-widget ul li a img`
 
 All post titles in the list:
-`.recent-posts-widget-with-thumbnails ul li a span.rpwwt-post-title`
+`.rpwwt-widget ul li a span.rpwwt-post-title`
 
 All post dates in the list:
-`.recent-posts-widget-with-thumbnails ul li div.rpwwt-post-date`
+`.rpwwt-widget ul li div.rpwwt-post-date`
 
 All post excerpts in the list: 
-`.recent-posts-widget-with-thumbnails ul li div.rpwwt-post-excerpt`
+`.rpwwt-widget ul li div.rpwwt-post-excerpt`
 
 == Installation ==
 
@@ -156,10 +166,18 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Screenshots ==
 
-1. The first screenshot shows the widget in the sidebar with a title, clickable images and links, in german.
-2. The second screenshot shows the german translated widget on the Widget Management Page in the backend.
+1. The first screenshot shows the widget in the sidebar with five teasers of current posts. Each list item shows the title, image, date and excerpt of a post.
+2. The second screenshot shows the widget on the Widget Management Page in the backend.
 
 == Changelog ==
+
+= 4.1 =
+* Changed single selection of a category to selection of multiple categories
+* Added DIV with id `rpwwt-{widget_id}` and class `rpwwt-widget` around list for available container with ensured attribute for CSS selectors
+* Updated admin CSS
+* Updated *.pot file and german translation
+* Updated screenshot of widget in the backend
+* Revised readme.txt
 
 = 4.0 =
 * Added category option: widget only lists posts of a selected category, else lists posts of all categories
@@ -231,6 +249,9 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.1 =
+Changed single selection of a category to multiple categories
 
 = 4.0 =
 Added options: sticky posts, current post, category filter; revised code

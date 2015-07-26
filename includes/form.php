@@ -28,8 +28,9 @@
 <input id="<?php echo $id_excerpt_more; ?>" name="<?php echo $this->get_field_name( 'excerpt_more' ); ?>" type="text" value="<?php echo $excerpt_more; ?>" size="3" /></p>
 
 <p>
-	<label for="<?php echo $id_category_id;?>"><?php _e( 'Show posts of selected category only?', $this->text_domain ); ?></label><br />
-<?php wp_dropdown_categories( $categories_dropdown_args ); ?><br />
+	<label for="<?php echo $id_category_ids;?>"><?php _e( 'Show posts of selected categories only?', $this->text_domain ); ?></label><br />
+<?php echo $output; ?><br>
+	<em><?php printf( __( 'Click on the categories with pressed CTRL key to select multiple categories. If %s was selected then other selections will be ignored.', $this->text_domain ), "'" . $label_all_cats . "'" ); ?></em>
 </p>
 
 <h4><?php _e( 'Thumbnail Options', $this->text_domain ); ?>:</h4>
