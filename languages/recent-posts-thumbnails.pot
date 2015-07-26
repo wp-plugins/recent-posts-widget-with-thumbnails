@@ -1,17 +1,17 @@
-# Copyright (C) 2014
+# Copyright (C) 2015
 # This file is distributed under the same license as the plugin package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Recent Posts Widget With Thumbnails\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/recent-posts-widget-with-"
 "thumbnails\n"
-"POT-Creation-Date: 2015-07-07 23:26+0200\n"
-"PO-Revision-Date: 2015-07-07 23:26+0200\n"
+"POT-Creation-Date: 2015-07-27 00:03+0200\n"
+"PO-Revision-Date: 2015-07-27 00:03+0200\n"
 "Language-Team: m.stehle@gmx.de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.3\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
 "esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -63,70 +63,75 @@ msgid "Signs after excerpt"
 msgstr ""
 
 #: includes/form.php:31
-msgid "Show posts of selected category only?"
+msgid "Show posts of selected categories only?"
 msgstr ""
 
-#: includes/form.php:35
+#: includes/form.php:33
+#, php-format
+msgid "Click on the categories with pressed CTRL key to select multiple categories. If %s was selected then other selections will be ignored."
+msgstr ""
+
+#: includes/form.php:36
 msgid "Thumbnail Options"
 msgstr ""
 
-#: includes/form.php:38
+#: includes/form.php:39
 msgid "Display post featured image?"
 msgstr ""
 
-#: includes/form.php:40
+#: includes/form.php:41
 msgid "Size of thumbnail"
 msgstr ""
 
-#: includes/form.php:42
+#: includes/form.php:43
 msgid "Specified width and height"
 msgstr ""
 
-#: includes/form.php:52
+#: includes/form.php:53
 #, php-format
 msgid "If you use a specified size the following sizes will be taken, otherwise they will be ignored and the selected dimension as stored in %s will be used:"
 msgstr ""
 
-#: includes/form.php:55
+#: includes/form.php:56
 msgid "Width of thumbnail"
 msgstr ""
 
-#: includes/form.php:58
+#: includes/form.php:59
 msgid "Height of thumbnail"
 msgstr ""
 
-#: includes/form.php:62
+#: includes/form.php:63
 msgid "Use aspect ratios of original images?"
 msgstr ""
 
-#: includes/form.php:62
+#: includes/form.php:63
 msgid "If checked the given width is used to determine the height of the thumbnail automatically. This option also supports responsive web design."
 msgstr ""
 
-#: includes/form.php:65
+#: includes/form.php:66
 msgid "Try to use the post's first image if post has no featured image?"
 msgstr ""
 
-#: includes/form.php:68
+#: includes/form.php:69
 msgid "Use first image only, ignore featured image?"
 msgstr ""
 
-#: includes/form.php:71
+#: includes/form.php:72
 msgid "Use default thumbnail if no image could be determined?"
 msgstr ""
 
-#: includes/form.php:73
+#: includes/form.php:74
 msgid "URL of default thumbnail (start with http://)"
 msgstr ""
 
-#: includes/form.php:76
+#: includes/form.php:77
 msgid "Do you like the plugin?"
 msgstr ""
 
-#: includes/form.php:76
+#: includes/form.php:77
 msgid "Please rate it at wordpress.org!"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:91
+#: recent-posts-widget-with-thumbnails.php:92
 msgid "Recent Posts With Thumbnails"
 msgstr ""
