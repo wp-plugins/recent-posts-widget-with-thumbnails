@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     4.1
+Version:     4.2.1
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-thumbnails
@@ -43,7 +43,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				$widget_desc = 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.';
 		}
 		$this->plugin_slug				= 'recent-posts-widget-with-thumbnails';
-		$this->plugin_version			= '4.1';
+		$this->plugin_version			= '4.2.1';
 		$this->default_number_posts		= 5;
 		$this->default_thumb_dimensions	= 'custom';
 		$this->default_thumb_width		= absint( round( get_option( 'thumbnail_size_w', 110 ) / 2 ) );
@@ -633,7 +633,11 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		// generate CSS
 		$css_code  = ".rpwwt-widget ul { list-style: outside none none; }\n"; 
 		$css_code .= ".rpwwt-widget ul li { overflow: hidden; margin: 0 0 1.5em; }\n"; 
-		$css_code .= ".rpwwt-widget ul li img { display: inline; float: left; margin: .3em .75em .75em 0; }\n";
+		if ( is_rtl() ) {
+			$css_code .= ".rpwwt-widget ul li img { display: inline; float: right; margin: .3em 0 .75em .75em; }\n";
+		} else {
+			$css_code .= ".rpwwt-widget ul li img { display: inline; float: left; margin: .3em .75em .75em 0; }\n";
+		}
 
 		foreach ( $all_instances as $number => $settings ) {
 			// set width and height
@@ -757,6 +761,6 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
  * @since 1.0
  */
 function register_recent_posts_widget_with_thumbnails () {
-	register_widget('Recent_Posts_Widget_With_Thumbnails');
+	register_widget( 'Recent_Posts_Widget_With_Thumbnails' );
 }
-add_action('init', 'register_recent_posts_widget_with_thumbnails', 1);
+add_action( 'widgets_init', 'register_recent_posts_widget_with_thumbnails', 1 );

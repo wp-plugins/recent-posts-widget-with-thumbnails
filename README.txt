@@ -1,10 +1,10 @@
 === Recent Posts Widget With Thumbnails ===
 Contributors: Hinjiriyo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
-Tags: aspect ratio, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width
+Tags: aspect ratio, category, categories, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
 Requires at least: 2.9
-Tested up to: 4.2.2
-Stable tag: 4.1
+Tested up to: 4.3
+Stable tag: 4.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,13 +12,17 @@ Small and fast plugin to display in the sidebar a list of linked titles and thum
 
 == Description ==
 
+The plugin is available in English, German (Deutsch) and Persian (Farsi).
+
+= Lightweight, simple and effective =
+
 No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and enhanced to display thumbnails of the posts.
 
 The thumbnails will be built from the featured image of a post or of the first image in the post content. If there is neither a featured image nor a content image then you can define a default thumbnail.
 
 The thumbnails appears left-aligned to the post titles. You can set the width and heigth of the thumbnails in the list.
 
-The widget is available in english and german.
+The widget is available in english, german and persian.
 
 = Options you can set =
 
@@ -31,7 +35,7 @@ The widget is available in english and german.
 7. Show post excerpt
 8. Excerpt length
 9. Signs after excerpt
-10. Show post of selected categories (or of all categories)
+10. Show posts of selected categories (or of all categories)
 11. Show post thumbnail (featured image)
 12. Registered thumbnail dimensions
 13. Thumbnail width in px
@@ -52,6 +56,16 @@ The widget is available in english and german.
 = Useful hints for developers: Hooks and CSS =
 
 See [Other Notes](https://wordpress.org/plugins/recent-posts-widget-with-thumbnails/other_notes/) for supported hooks and available CSS selectors.
+
+= Languages =
+
+The user interface is available in
+
+* English
+* German (Deutsch)
+* Persian (Farsi), kindly drawn up by [Sajjad Panahi](https://profiles.wordpress.org/asreelm)
+
+Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](https://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails).
 
 == Other Notes ==
 
@@ -151,15 +165,6 @@ This feature will come in a future version of the plugin. Set the CSS in the sty
 
 Yes. It works with images previously uploaded into the media library. You can select to prefer the first image to the featured image or to use the first image only.
 
-= Which languages does the plugin support? =
-
-Actually these languages are supported:
-
-* English
-* German
-
-Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](http://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails).
-
 = Where is the *.pot file for translating the plugin in any language? =
 
 If you want to contribute a translation of the plugin in your language it would be great! You would find the *.pot file in the 'languages' directory of this plugin. If you would send the *.po file to me I would include it in the next release of the plugin.
@@ -170,6 +175,13 @@ If you want to contribute a translation of the plugin in your language it would 
 2. The second screenshot shows the widget on the Widget Management Page in the backend.
 
 == Changelog ==
+
+= 4.2.1 =
+* Fixed alignment of text and thumbnail in right-to-left (RTL) languages. Please re-save the widget to get the correct layout in RTL languages.
+
+= 4.2 =
+* Added persian translation (Farsi). Thank you very much [Sajjad Panahi](https://wordpress.org/support/profile/asreelm)
+* Tested successfully with WordPress 4.3
 
 = 4.1 =
 * Changed single selection of a category to selection of multiple categories
@@ -249,6 +261,12 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.2.1 =
+Fixed alignment of text and thumbnail in right-to-left (RTL) languages. Please re-save the widget to get the correct layout in RTL languages.
+
+= 4.2 =
+Added persian translation (Farsi)
 
 = 4.1 =
 Changed single selection of a category to multiple categories
