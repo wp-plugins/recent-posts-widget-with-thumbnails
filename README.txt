@@ -1,10 +1,10 @@
 === Recent Posts Widget With Thumbnails ===
 Contributors: Hinjiriyo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
-Tags: aspect ratio, category, categories, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
+Tags: arabic, aspect ratio, category, categories, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
 Requires at least: 2.9
-Tested up to: 4.3
-Stable tag: 4.2.1
+Tested up to: 4.3.1
+Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Small and fast plugin to display in the sidebar a list of linked titles and thum
 
 == Description ==
 
-The plugin is available in English, German (Deutsch) and Persian (Farsi).
+The plugin is available in English, German (Deutsch), Persian (Farsi) and Arabic (العربية).
 
 = Lightweight, simple and effective =
 
@@ -64,6 +64,7 @@ The user interface is available in
 * English
 * German (Deutsch)
 * Persian (Farsi), kindly drawn up by [Sajjad Panahi](https://profiles.wordpress.org/asreelm)
+* Arabic (العربية), kindly drawn up by [Shadi AlZard](https://wordpress.org/support/profile/salzard)
 
 Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](https://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails).
 
@@ -176,6 +177,10 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Changelog ==
 
+= 4.3 =
+* Added arabic translation. Thank you very much, [Shadi AlZard](https://wordpress.org/support/profile/salzard)
+* Tested successfully with WordPress 4.3.1
+
 = 4.2.1 =
 * Fixed alignment of text and thumbnail in right-to-left (RTL) languages. Please re-save the widget to get the correct layout in RTL languages.
 
@@ -261,6 +266,9 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.3 =
+Added arabic translation
 
 = 4.2.1 =
 Fixed alignment of text and thumbnail in right-to-left (RTL) languages. Please re-save the widget to get the correct layout in RTL languages.
