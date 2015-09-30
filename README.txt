@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: arabic, aspect ratio, category, categories, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
 Requires at least: 2.9
 Tested up to: 4.3.1
-Stable tag: 4.3
+Stable tag: 4.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,9 +20,7 @@ No huge widget with hundreds of options. This plugin is based on the well-known 
 
 The thumbnails will be built from the featured image of a post or of the first image in the post content. If there is neither a featured image nor a content image then you can define a default thumbnail.
 
-The thumbnails appears left-aligned to the post titles. You can set the width and heigth of the thumbnails in the list.
-
-The widget is available in english, german and persian.
+You can set the width and heigth of the thumbnails in the list. The thumbnails appear left-aligned to the post titles in left-to-right languages. In right-to-left languages they appear right-aligned.
 
 = Options you can set =
 
@@ -177,6 +175,10 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Changelog ==
 
+= 4.3.1 =
+* Little adaptions for language files, ready for translate.wordpress.org
+* Updated *.pot file and translations
+
 = 4.3 =
 * Added arabic translation. Thank you very much, [Shadi AlZard](https://wordpress.org/support/profile/salzard)
 * Tested successfully with WordPress 4.3.1
@@ -266,6 +268,9 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.3.1 =
+Little adaptions for language files, updated translations
 
 = 4.3 =
 Added arabic translation

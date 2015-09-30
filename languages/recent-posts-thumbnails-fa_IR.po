@@ -5,15 +5,15 @@ msgstr ""
 "Project-Id-Version: Recent Posts Widget With Thumbnails\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/recent-posts-widget-with-"
 "thumbnails\n"
-"POT-Creation-Date: 2015-08-03 13:52+0330\n"
-"PO-Revision-Date: 2015-08-03 13:59+0330\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2015-09-30 12:28+0200\n"
+"PO-Revision-Date: 2015-09-30 12:32+0200\n"
+"Last-Translator: Martin Stehle <m.stehle@gmx.de>\n"
 "Language-Team: m.stehle@gmx.de\n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
 "esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -153,6 +153,16 @@ msgstr "از این افزونه راضی هستید؟"
 msgid "Please rate it at wordpress.org!"
 msgstr "لطفا در wordpress.org امتیاز دهید!"
 
-#: recent-posts-widget-with-thumbnails.php:92
+#: recent-posts-widget-with-thumbnails.php:66
+msgid "Recent Posts, With Thumbnails"
+msgstr "نوشته های اخیر با تصویر بندانگشتی"
+
+#: recent-posts-widget-with-thumbnails.php:67
+msgid ""
+"List of your site&#8217;s most recent posts, with clickable title and "
+"thumbnails."
+msgstr "فهرست سایت شما ارسال جدید، با عنوان قابل کلیک و عکسها."
+
+#: recent-posts-widget-with-thumbnails.php:93
 msgid "Recent Posts With Thumbnails"
 msgstr "نوشته های اخیر با تصویر بندانگشتی"

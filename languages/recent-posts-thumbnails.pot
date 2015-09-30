@@ -1,17 +1,16 @@
-# Copyright (C) 2015
+# Copyright (C) 2014
 # This file is distributed under the same license as the plugin package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Recent Posts Widget With Thumbnails\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/plugins/recent-posts-widget-with-"
 "thumbnails\n"
-"POT-Creation-Date: 2015-07-27 00:03+0200\n"
-"PO-Revision-Date: 2015-07-27 00:03+0200\n"
+"POT-Creation-Date: 2015-09-30 12:27+0200\n"
 "Language-Team: m.stehle@gmx.de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.3\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-KeywordsList: __;_e;_n;_x;esc_html_e;esc_html__;esc_attr_e;"
 "esc_attr__;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_x:1,2c;_n:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -132,6 +131,14 @@ msgstr ""
 msgid "Please rate it at wordpress.org!"
 msgstr ""
 
-#: recent-posts-widget-with-thumbnails.php:92
+#: recent-posts-widget-with-thumbnails.php:66
+msgid "Recent Posts, With Thumbnails"
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:67
+msgid "List of your site&#8217;s most recent posts, with clickable title and thumbnails."
+msgstr ""
+
+#: recent-posts-widget-with-thumbnails.php:93
 msgid "Recent Posts With Thumbnails"
 msgstr ""
