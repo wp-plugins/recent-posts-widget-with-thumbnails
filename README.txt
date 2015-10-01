@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: arabic, aspect ratio, category, categories, current post, excerpt, featured, featured images, first post image, height, image, images, listed posts, post date, post title, recent posts, sticky, thumb, thumbnail, thumbnails, thumbs, widget, widgets, width, persian, farsi
 Requires at least: 2.9
 Tested up to: 4.3.1
-Stable tag: 4.3.1
+Stable tag: 4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -175,6 +175,11 @@ If you want to contribute a translation of the plugin in your language it would 
 
 == Changelog ==
 
+= 4.3.2 =
+* Added widget description based on backend language
+* Corrected text domain name for translate.wordpress.org
+* Renamed translation files
+
 = 4.3.1 =
 * Little adaptions for language files, ready for translate.wordpress.org
 * Updated *.pot file and translations
@@ -268,6 +273,9 @@ Successfully tested with WordPress 4.0
 * The plugin was released.
 
 == Upgrade Notice ==
+
+= 4.3.2 =
+Added widget description based on backend language, corrected text domain name
 
 = 4.3.1 =
 Little adaptions for language files, updated translations
