@@ -3,10 +3,10 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     4.3.1
+Version:     4.3.2
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
-Text Domain: recent-posts-thumbnails
+Text Domain: recent-posts-widget-with-thumbnails
 Domain Path: /languages
 License:     GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -32,8 +32,17 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	var $css_file_path; // path of the public css file
 
 	function __construct() {
-		switch ( get_locale() ) {
-			case 'de_DE':
+		$language_codes = explode( '_', get_locale() );
+		switch ( $language_codes[ 0 ] ) {
+			case 'ar':
+				$widget_name = 'آخر المقالات مع الصوّر المصغّرة';
+				$widget_desc = 'قائمة موقعك المشاركات الأخيرة، مع عنوان نقر والصور المصغرة';
+				break;
+			case 'fa':
+				$widget_name = 'نوشته های اخیر با تصویر بندانگشتی';
+				$widget_desc = 'فهرست سایت شما ارسال جدید، با عنوان قابل کلیک و عکسها';
+				break;
+			case 'de':
 				$widget_name = 'Letzte Beitr&auml;ge, mit Vorschaubildern';
 				$widget_desc = 'Liste deiner aktuellsten Beitr&auml;ge, mit klickbaren &Uuml;berschriften und Vorschaubildern.';
 				break;
@@ -42,7 +51,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				$widget_desc = 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.';
 		}
 		$this->plugin_slug				= 'recent-posts-widget-with-thumbnails';
-		$this->plugin_version			= '4.3.1';
+		$this->plugin_version			= '4.3.2';
 		$this->default_number_posts		= 5;
 		$this->default_thumb_dimensions	= 'custom';
 		$this->default_thumb_width		= absint( round( get_option( 'thumbnail_size_w', 110 ) / 2 ) );
@@ -63,8 +72,8 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_public_style' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_style' ) );
 
-		$widget_name = __( 'Recent Posts, With Thumbnails', 'recent-posts-thumbnails' );
-		$widget_desc = __( 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.', 'recent-posts-thumbnails' );
+		$widget_name = __( 'Recent Posts, With Thumbnails', 'recent-posts-widget-with-thumbnails' );
+		$widget_desc = __( 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.', 'recent-posts-widget-with-thumbnails' );
 	}
 
 	function widget( $args, $instance ) {
@@ -90,7 +99,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		extract( $args );
 
 		// get and sanitize values
-		$title				= ( ! empty( $instance[ 'title' ] ) )				? esc_attr( $instance[ 'title' ] )						: __( 'Recent Posts With Thumbnails', 'recent-posts-thumbnails' );
+		$title				= ( ! empty( $instance[ 'title' ] ) )				? esc_attr( $instance[ 'title' ] )						: __( 'Recent Posts With Thumbnails', 'recent-posts-widget-with-thumbnails' );
 		$title				= apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$category_ids 		= ( ! empty( $instance[ 'category_ids' ] ) )		? array_map( 'absint', $instance[ 'category_ids' ] )	: $this->default_category_ids;
 		$default_url 		= ( ! empty( $instance[ 'default_url' ] ) )			? esc_url( $instance[ 'default_url' ] )					: $this->default_thumb_url;
@@ -543,8 +552,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	 */
 	public function load_plugin_textdomain() {
 
-		$domain = 'recent-posts-thumbnails';
-		load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'recent-posts-widget-with-thumbnails', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 	}
 
