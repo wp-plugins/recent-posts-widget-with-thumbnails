@@ -3,7 +3,7 @@
 Plugin Name: Recent Posts Widget With Thumbnails
 Plugin URI:  http://wordpress.org/plugins/recent-posts-widget-with-thumbnails/
 Description: Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
-Version:     4.3.2
+Version:     4.3.4
 Author:      Martin Stehle
 Author URI:  http://stehle-internet.de
 Text Domain: recent-posts-widget-with-thumbnails
@@ -30,6 +30,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	var $default_excerpt_more; // characters to indicate further text
 	var $default_category_ids; // selected categories
 	var $css_file_path; // path of the public css file
+	var $current_thumb_dimensions; // set size of the thumbnail
 
 	function __construct() {
 		$language_codes = explode( '_', get_locale() );
@@ -51,12 +52,12 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 				$widget_desc = 'List of your site&#8217;s most recent posts, with clickable title and thumbnails.';
 		}
 		$this->plugin_slug				= 'recent-posts-widget-with-thumbnails';
-		$this->plugin_version			= '4.3.2';
+		$this->plugin_version			= '4.3.4';
 		$this->default_number_posts		= 5;
 		$this->default_thumb_dimensions	= 'custom';
 		$this->default_thumb_width		= absint( round( get_option( 'thumbnail_size_w', 110 ) / 2 ) );
 		$this->default_thumb_height 	= absint( round( get_option( 'thumbnail_size_h', 110 ) / 2 ) );
-		$this->default_excerpt_length	= apply_filters( 'excerpt_length', 55 );
+		$this->default_excerpt_length	= absint( apply_filters( 'excerpt_length', 55 ) );
 		$this->default_excerpt_more		= apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
 		$this->default_category_ids		= array( 0 );
 		$this->default_thumb_url		= plugins_url( 'default_thumb.gif', __FILE__ );
@@ -99,13 +100,13 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		extract( $args );
 
 		// get and sanitize values
-		$title				= ( ! empty( $instance[ 'title' ] ) )				? esc_attr( $instance[ 'title' ] )						: __( 'Recent Posts With Thumbnails', 'recent-posts-widget-with-thumbnails' );
+		$title				= ( ! empty( $instance[ 'title' ] ) )				? $instance[ 'title' ]									: __( 'Recent Posts With Thumbnails', 'recent-posts-widget-with-thumbnails' );
 		$title				= apply_filters( 'widget_title', $title, $instance, $this->id_base );
 		$category_ids 		= ( ! empty( $instance[ 'category_ids' ] ) )		? array_map( 'absint', $instance[ 'category_ids' ] )	: $this->default_category_ids;
-		$default_url 		= ( ! empty( $instance[ 'default_url' ] ) )			? esc_url( $instance[ 'default_url' ] )					: $this->default_thumb_url;
+		$default_url 		= ( ! empty( $instance[ 'default_url' ] ) )			? $instance[ 'default_url' ]							: $this->default_thumb_url;
 		$excerpt_length 	= ( ! empty( $instance[ 'excerpt_length' ] ) )		? absint( $instance[ 'excerpt_length' ] )				: $this->default_excerpt_length;
 		$number_posts		= ( ! empty( $instance[ 'number_posts' ] ) )		? absint( $instance[ 'number_posts' ] )					: $this->default_number_posts;
-		$thumb_dimensions	= ( ! empty( $instance[ 'thumb_dimensions' ] ) )	? esc_attr( $instance[ 'thumb_dimensions' ] )			: $this->default_thumb_dimensions;
+		$thumb_dimensions	= ( ! empty( $instance[ 'thumb_dimensions' ] ) )	? $instance[ 'thumb_dimensions' ]						: $this->default_thumb_dimensions;
 		$hide_current_post	= ( isset( $instance[ 'hide_current_post' ] ) ) 	? (bool) $instance[ 'hide_current_post' ]				: false;
 		$hide_title			= ( isset( $instance[ 'hide_title' ] ) ) 			? (bool) $instance[ 'hide_title' ]						: false;
 		$keep_aspect_ratio	= ( isset( $instance[ 'keep_aspect_ratio' ] ) )		? (bool) $instance[ 'keep_aspect_ratio' ]				: false;
@@ -119,7 +120,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 
 		// let empty string
 		if ( ! empty( $instance[ 'excerpt_more' ] ) ) {
-			$excerpt_more = esc_attr( $instance[ 'excerpt_more' ] );
+			$excerpt_more = $instance[ 'excerpt_more' ];
 		} elseif ( '' == $instance[ 'excerpt_more' ] ) {
 			$excerpt_more = '';
 		} else {
@@ -148,12 +149,12 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		}
 
 		// set image dimension array
-		$size = array( $thumb_width, $thumb_height );
+		$this->current_thumb_dimensions = array( $thumb_width, $thumb_height );
 
 		// set default image code
 		$default_attr = array(
 			'src'	=> $default_url,
-			'class'	=> "attachment-" . join( 'x', $size ),
+			'class'	=> "attachment-" . join( 'x', $this->current_thumb_dimensions ),
 			'alt'	=> '',
 		);
 		$default_img = '<img ';
@@ -233,7 +234,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 
 		// let empty string
 		if ( isset( $new_widget_settings[ 'excerpt_more' ] ) ) {
-			$instance[ 'excerpt_more' ] = strip_tags( $new_widget_settings[ 'excerpt_more' ] );
+			$instance[ 'excerpt_more' ] = $new_widget_settings[ 'excerpt_more' ];
 		} elseif ( '' == $new_widget_settings[ 'excerpt_more' ] ) {
 			$instance[ 'excerpt_more' ] = '';
 		} else {
@@ -269,9 +270,9 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 
 	function form( $instance ) {
 		// get and sanitize values
-		$title				= ( isset( $instance[ 'title' ] ) ) 			? esc_attr( $instance[ 'title' ] )						: '';
-		$thumb_dimensions	= ( isset( $instance[ 'thumb_dimensions' ] ) )	? esc_attr( $instance[ 'thumb_dimensions' ] )			: $this->default_thumb_dimensions;
-		$default_url		= ( isset( $instance[ 'default_url' ] ) )		? esc_url( $instance[ 'default_url' ] )					: $this->default_thumb_url;
+		$title				= ( isset( $instance[ 'title' ] ) ) 			? $instance[ 'title' ]									: '';
+		$thumb_dimensions	= ( isset( $instance[ 'thumb_dimensions' ] ) )	? $instance[ 'thumb_dimensions' ]						: $this->default_thumb_dimensions;
+		$default_url		= ( isset( $instance[ 'default_url' ] ) )		? $instance[ 'default_url' ]							: $this->default_thumb_url;
 		$excerpt_length		= ( isset( $instance[ 'excerpt_length' ] ) )	? absint( $instance[ 'excerpt_length' ] )				: $this->default_excerpt_length;
 		$number_posts		= ( isset( $instance[ 'number_posts' ] ) )		? absint( $instance[ 'number_posts' ] )					: $this->default_number_posts;
 		$thumb_height		= ( isset( $instance[ 'thumb_height' ] ) )		? absint( $instance[ 'thumb_height' ] )					: $this->default_thumb_height;
@@ -293,7 +294,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 			if ( '' == $instance[ 'excerpt_more' ] ) {
 				$excerpt_more = '';
 			} else {
-				$excerpt_more = esc_attr( $instance[ 'excerpt_more' ] );
+				$excerpt_more = $instance[ 'excerpt_more' ];
 			}
 		} else {
 			 $excerpt_more = $this->default_excerpt_more;
@@ -384,16 +385,16 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$number_of_cats = count( $categories );
 		
 		// get size (number of rows to display) of selection box: not more than 10
-		$size = ( 10 > $number_of_cats ) ? $number_of_cats + 1 : 10;
+		$number_of_rows = ( 10 > $number_of_cats ) ? $number_of_cats + 1 : 10;
 
 		// start selection box
-		$output = sprintf(
+		$selection_element = sprintf(
 			'<select name="%s[]" id="%s" class="rpwwt-cat-select" multiple size="%d">',
 			$this->get_field_name( 'category_ids' ),
 			$id_category_ids,
-			$size
+			$number_of_rows
 		);
-		$output .= "\n";
+		$selection_element .= "\n";
 
 		// make selection box entries
 		$cat_list = array();
@@ -459,24 +460,24 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 
 			// make HTML of selection box
 			$selected = ( in_array( 0, $category_ids ) ) ? ' selected="selected"' : '';
-			$output .= "\t";
-			$output .= '<option value="0"' . $selected . '>' . $label_all_cats . '</option>';
-			$output .= "\n";
+			$selection_element .= "\t";
+			$selection_element .= '<option value="0"' . $selected . '>' . $label_all_cats . '</option>';
+			$selection_element .= "\n";
 
 			foreach ( $cat_list as $category ) {
 				$cat_name = apply_filters( 'list_cats', $category[ 'name' ], $category );
 				$pad = ( 0 < $category[ 'depth' ] ) ? str_repeat('&ndash;&nbsp;', $category[ 'depth' ] ) : '';
-				$output .= "\t";
-				$output .= '<option value="' . $category[ 'id' ] . '"';
-				$output .= ( in_array( $category[ 'id' ], $category_ids ) ) ? ' selected="selected"' : '';
-				$output .= '>' . $pad . $cat_name . '</option>';
-				$output .= "\n";
+				$selection_element .= "\t";
+				$selection_element .= '<option value="' . $category[ 'id' ] . '"';
+				$selection_element .= ( in_array( $category[ 'id' ], $category_ids ) ) ? ' selected="selected"' : '';
+				$selection_element .= '>' . $pad . $cat_name . '</option>';
+				$selection_element .= "\n";
 			}
 			
 		}
 
 		// close selection box
-		$output .= "</select>\n";
+		$selection_element .= "</select>\n";
 		
 		// print form in widgets page
 		include 'includes/form.php';
@@ -564,45 +565,48 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	 *
 	 * @return    integer    the post id of the first content image
 	 */
-	private function get_first_content_image_id ( $content ) {
+	private function get_first_content_image_id () {
 		// set variables
 		global $wpdb;
-		// look for images in HTML code
-		preg_match_all( '/<img[^>]+>/i', $content, $all_img_tags );
-		if ( $all_img_tags ) {
-			foreach ( $all_img_tags[ 0 ] as $img_tag ) {
-				// find class attribute and catch its value
-				preg_match( '/<img.*?class\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img_tag, $img_class );
-				if ( $img_class ) {
-					// Look for the WP image id
-					preg_match( '/wp-image-([\d]+)/i', $img_class[ 1 ], $found_id );
-					// if first image id found: check whether is image
-					if ( $found_id ) {
-						$img_id = absint( $found_id[ 1 ] );
-						// if is image: return its id
-						if ( wp_get_attachment_image_src( $img_id ) ) {
-							return $img_id;
-						}
-					} // if(found_id)
-				} // if(img_class)
-				
-				// else: try to catch image id by its url as stored in the database
-				// find src attribute and catch its value
-				preg_match( '/<img.*?src\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img_tag, $img_src );
-				if ( $img_src ) {
-					// delete optional query string in img src
-					$url = preg_replace( '/([^?]+).*/', '\1', $img_src[ 1 ] );
-					// delete image dimensions data in img file name, just take base name and extension
-					$guid = preg_replace( '/(.+)-\d+x\d+\.(\w+)/', '\1.\2', $url );
-					// look up its ID in the db
-					$found_id = $wpdb->get_var( $wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE `guid` = '%s'", $guid ) );
-					// if first image id found: return it
-					if ( $found_id ) {
-						return absint( $found_id );
-					} // if(found_id)
-				} // if(img_src)
-			} // foreach(img_tag)
-		} // if(all_img_tags)
+		$post = get_post();
+		if ( $post and isset( $post->post_content ) ) {
+			// look for images in HTML code
+			preg_match_all( '/<img[^>]+>/i', $post->post_content, $all_img_tags );
+			if ( $all_img_tags ) {
+				foreach ( $all_img_tags[ 0 ] as $img_tag ) {
+					// find class attribute and catch its value
+					preg_match( '/<img.*?class\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img_tag, $img_class );
+					if ( $img_class ) {
+						// Look for the WP image id
+						preg_match( '/wp-image-([\d]+)/i', $img_class[ 1 ], $found_id );
+						// if first image id found: check whether is image
+						if ( $found_id ) {
+							$img_id = absint( $found_id[ 1 ] );
+							// if is image: return its id
+							if ( wp_get_attachment_image_src( $img_id ) ) {
+								return $img_id;
+							}
+						} // if(found_id)
+					} // if(img_class)
+					
+					// else: try to catch image id by its url as stored in the database
+					// find src attribute and catch its value
+					preg_match( '/<img.*?src\s*=\s*[\'"]([^\'"]+)[\'"][^>]*>/i', $img_tag, $img_src );
+					if ( $img_src ) {
+						// delete optional query string in img src
+						$url = preg_replace( '/([^?]+).*/', '\1', $img_src[ 1 ] );
+						// delete image dimensions data in img file name, just take base name and extension
+						$guid = preg_replace( '/(.+)-\d+x\d+\.(\w+)/', '\1.\2', $url );
+						// look up its id in the db
+						$found_id = $wpdb->get_var( $wpdb->prepare( "SELECT `ID` FROM $wpdb->posts WHERE `guid` = '%s'", $guid ) );
+						// if id is available: return it
+						if ( $found_id ) {
+							return absint( $found_id );
+						} // if(found_id)
+					} // if(img_src)
+				} // foreach(img_tag)
+			} // if(all_img_tags)
+		} // if (post content)
 		
 		// if nothing found: return 0
 		return 0;
@@ -616,12 +620,12 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 	 *
 	 * @return    bool    success on finding an image
 	 */
-	private function the_first_posts_image ( $content, $size ) {
+	private function the_first_post_image () {
 		// look for first image
-		$thumb_id = $this->get_first_content_image_id( $content );
+		$thumb_id = $this->get_first_content_image_id();
 		// if there is first image then show first image
 		if ( $thumb_id ) :
-			echo wp_get_attachment_image( $thumb_id, $size );
+			echo wp_get_attachment_image( $thumb_id, $this->current_thumb_dimensions );
 			return true;
 		else :
 			return false;
@@ -640,7 +644,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 		$set_default = true;
 
 		// generate CSS
-		$css_code  = ".rpwwt-widget ul { list-style: outside none none; }\n"; 
+		$css_code  = ".rpwwt-widget ul { list-style: outside none none; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }\n"; 
 		$css_code .= ".rpwwt-widget ul li { overflow: hidden; margin: 0 0 1.5em; }\n"; 
 		if ( is_rtl() ) {
 			$css_code .= ".rpwwt-widget ul li img { display: inline; float: right; margin: .3em 0 .75em .75em; }\n";
@@ -652,7 +656,7 @@ class Recent_Posts_Widget_With_Thumbnails extends WP_Widget {
 			// set width and height
 			$thumb_width = $this->default_thumb_width;
 			$thumb_height = $this->default_thumb_height;
-			$thumb_dimensions = isset( $settings[ 'thumb_dimensions' ] ) ? esc_attr( $settings[ 'thumb_dimensions' ] )  : $this->default_thumb_dimensions;
+			$thumb_dimensions = isset( $settings[ 'thumb_dimensions' ] ) ? $settings[ 'thumb_dimensions' ] : $this->default_thumb_dimensions;
 			if ( $thumb_dimensions == $this->default_thumb_dimensions ) {
 				if ( isset( $settings[ 'thumb_width' ] ) ) {
 					$thumb_width  = absint( $settings[ 'thumb_width' ]  );

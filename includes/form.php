@@ -1,7 +1,7 @@
 <h4><?php _e( 'Display Options', 'recent-posts-widget-with-thumbnails' ); ?>:</h4>
 
 <p><label for="<?php echo $id_title; ?>"><?php _e( 'Title:' ); ?></label>
-<input class="widefat" id="<?php echo $id_title; ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
+<input class="widefat" id="<?php echo $id_title; ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></p>
 
 <p><label for="<?php echo $id_number_posts; ?>"><?php _e( 'Number of posts to show:' ); ?></label>
 <input id="<?php echo $id_number_posts; ?>" name="<?php echo $this->get_field_name( 'number_posts' ); ?>" type="text" value="<?php echo $number_posts; ?>" size="3" /></p>
@@ -25,11 +25,11 @@
 <input id="<?php echo $id_excerpt_length; ?>" name="<?php echo $this->get_field_name( 'excerpt_length' ); ?>" type="text" value="<?php echo $excerpt_length; ?>" size="3" /></p>
 
 <p><label for="<?php echo $id_excerpt_more; ?>"><?php _e( 'Signs after excerpt', 'recent-posts-widget-with-thumbnails' ); ?>:</label>
-<input id="<?php echo $id_excerpt_more; ?>" name="<?php echo $this->get_field_name( 'excerpt_more' ); ?>" type="text" value="<?php echo $excerpt_more; ?>" size="3" /></p>
+<input id="<?php echo $id_excerpt_more; ?>" name="<?php echo $this->get_field_name( 'excerpt_more' ); ?>" type="text" value="<?php echo esc_attr( $excerpt_more ); ?>" size="3" /></p>
 
 <p>
 	<label for="<?php echo $id_category_ids;?>"><?php _e( 'Show posts of selected categories only?', 'recent-posts-widget-with-thumbnails' ); ?></label><br />
-<?php echo $output; ?><br>
+<?php echo $selection_element; ?><br>
 	<em><?php printf( __( 'Click on the categories with pressed CTRL key to select multiple categories. If %s was selected then other selections will be ignored.', 'recent-posts-widget-with-thumbnails' ), "'" . $label_all_cats . "'" ); ?></em>
 </p>
 
@@ -72,6 +72,6 @@ foreach ( $size_options as $option ) {
 <label for="<?php echo $id_use_default; ?>"><?php _e( 'Use default thumbnail if no image could be determined?', 'recent-posts-widget-with-thumbnails' ); ?></label></p>
 
 <p><label for="<?php echo $id_default_url; ?>"><?php _e( 'URL of default thumbnail (start with http://)', 'recent-posts-widget-with-thumbnails' ); ?>:</label>
-<input class="widefat" id="<?php echo $id_default_url; ?>" name="<?php echo $this->get_field_name( 'default_url' ); ?>" type="text" value="<?php echo $default_url; ?>" /></p>
+<input class="widefat" id="<?php echo $id_default_url; ?>" name="<?php echo $this->get_field_name( 'default_url' ); ?>" type="text" value="<?php echo esc_url( $default_url ); ?>" /></p>
 
 <p><?php _e( 'Do you like the plugin?', 'recent-posts-widget-with-thumbnails' ); ?> <a href="http://wordpress.org/support/view/plugin-reviews/recent-posts-widget-with-thumbnails"><?php _e( 'Please rate it at wordpress.org!', 'recent-posts-widget-with-thumbnails' ); ?></a></p>
